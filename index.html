@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Jellyfin Request Form</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body style="background:#0b0b0b; font-family: system-ui, sans-serif; color:#eaeaea;">
+
+<div style="
+  max-width: 420px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #121212;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+">
+
+  <h2 style="text-align:center; color:#00a4dc; margin-top:0;">
+    Request a Movie or Show
+  </h2>
+
+  <form
+    action="https://formsubmit.co/zablomquist@gmail.com"
+    method="POST"
+    target="hidden_iframe"
+    onsubmit="submitted=true;"
+  >
+
+    <label>Title</label>
+    <input type="text" name="title" required
+      style="width:100%;padding:0.6rem;margin-bottom:1rem;">
+
+    <label>Year (optional)</label>
+    <input type="number" name="year"
+      style="width:100%;padding:0.6rem;margin-bottom:1.5rem;">
+
+    <!-- FormSubmit config -->
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_template" value="table">
+
+    <button type="submit"
+      style="width:100%;padding:0.7rem;background:#00a4dc;color:#fff;
+      border:none;border-radius:6px;font-weight:bold;cursor:pointer;">
+      Submit Request
+    </button>
+  </form>
+
+  <p id="successMsg" style="display:none;text-align:center;margin-top:1rem;color:#00a4dc;">
+    Request submitted successfully!
+  </p>
+
+  <iframe name="hidden_iframe" style="display:none;"></iframe>
+</div>
+
+<script>
+  let submitted = false;
+  const form = document.querySelector("form");
+  form.addEventListener("submit", () => {
+    document.getElementById("successMsg").style.display = "block";
+    form.reset();
+  });
+</script>
+
+</body>
+</html>
